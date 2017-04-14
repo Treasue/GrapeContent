@@ -219,7 +219,7 @@ public class ContentModel {
 //	}
 
 	public JSONArray select(String oid) {
-		JSONArray array = dbcontent.eq("oid", oid).select();
+		JSONArray array = dbcontent.eq("_id", new ObjectId(oid)).select();
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject _obj = (JSONObject) array.get(i);
 			String state = showstate(_obj.get("state").toString());
