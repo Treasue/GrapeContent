@@ -264,39 +264,42 @@ public class ContentModel {
 		dbcontent.field("point").select();
 	}
 
-//	public JSONArray findByGroupID(String ogid) {
-//		JSONArray _obj = new JSONArray();
-//		String content = session.get(_obj_session.get("content").toString());
-//		JSONArray array = (JSONArray) JSONValue.parse(content);
-//		JSONObject object = new JSONObject();
-//		for (int i = 0; i < array.size(); i++) {
-//			object = (JSONObject) array.get(i);
-//			if (ArraysUtil.contains(object.get("ogid").toString().split(","), ogid)) {
-//				object.remove("ogid");
-//			}
-//			String state = showstate(object.get("state").toString());
-//			object.put("state", state);
-//			_obj.add(object);
-//		}
-//		return _obj;
-//	}
 	public JSONArray findByGroupID(String ogid) {
 		JSONArray _obj = new JSONArray();
 //		String content = session.get(_obj_session.get("content").toString());
-		
 //		JSONArray array = (JSONArray) JSONValue.parse(content);
 		JSONArray array = dbcontent.select();
 		JSONObject object = new JSONObject();
 		for (int i = 0; i < array.size(); i++) {
 			object = (JSONObject) array.get(i);
 			if (ArraysUtil.contains(object.get("ogid").toString().split(","), ogid)) {
-				String state = showstate(object.get("state").toString());
-				object.put("state", state);
-				_obj.add(object);
+				object.remove("ogid");
 			}
+			String state = showstate(object.get("state").toString());
+			object.put("state", state);
+			_obj.add(object);
 		}
 		return _obj;
 	}
+	
+//	public JSONArray findByGroupID(String ogid) {
+//		JSONArray _obj = new JSONArray();
+////		String content = session.get(_obj_session.get("content").toString());
+//		
+////		JSONArray array = (JSONArray) JSONValue.parse(content);
+//		JSONArray array = dbcontent.select();
+//		JSONObject object = new JSONObject();
+//		for (int i = 0; i < array.size(); i++) {
+//			object = (JSONObject) array.get(i);
+//			if (ArraysUtil.contains(object.get("ogid").toString().split(","), ogid)) {
+//				String state = showstate(object.get("state").toString());
+//				object.put("state", state);
+//				_obj.add(object);
+//			}
+//		}
+//		return _obj;
+//	}
+	
 //	public JSONArray findByWebID(String wbid) {
 //		JSONArray _obj = new JSONArray();
 ////		String content = session.get(_obj_session.get("content").toString());
