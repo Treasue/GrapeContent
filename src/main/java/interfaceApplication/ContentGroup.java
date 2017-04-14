@@ -40,7 +40,7 @@ public class ContentGroup {
 	public String GroupDelete(String ogid) {
 		int code = 0;
 		// 根据内容组显示文章
-		JSONArray array = (JSONArray) JSONValue.parse(new Content().showbygroupId(ogid));
+		JSONArray array = (JSONArray) JSONValue.parse(new Content().ShowByGroupId(ogid));
 		if (array.size() != 0) {
 			// 含有该内容组的文章设置为默认值
 			code = new ContentModel().setGroup(array, ogid);
